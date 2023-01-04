@@ -22,3 +22,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Services\Calculator:
+        arguments:
+            $tva: 20
+
+    App\Services\Detector:
+        arguments:
+            $seiltva: 80
+
+
+    Cocur\Slugify\Slugify: ~
