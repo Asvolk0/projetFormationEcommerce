@@ -8,16 +8,21 @@
 		Nos produits phares
 	</h1>
 	<div class="row">
-		{% for i in 1..3 %}
+		{% for product in products %}
 			<div class="col">
 				<div class="card">
-					<img src="https://picsum.photos/200/200" alt="Image du produit" class="img-fluid">
+					<img src="{{ product.picture }}" alt="Image du produit" class="img-fluid">
 					<div class="card-body">
 						<h4 class="card-title">
-							Superbe Chaise en bois
+							{{ product.name }}
+							({{ product.price / 100 }}
+							&euro; )
 						</h4>
+						<span class="badge bg-info">
+							{{product.category.name}}
+						</span>
 						<p class="card-text">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure, hic?
+							{{ product.shortDescription }}
 						</p>
 						<a href="#" class="btn btn-primary btn-sm">Détails</a>
 						<a href="#" class="btn btn-success btn-sm">Ajouter</a>
