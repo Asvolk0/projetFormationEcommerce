@@ -17,13 +17,23 @@ class CategoryController extends AbstractController
 
     protected $slugger;
     protected $em;
+    protected $categoryRepository;
 
-    public function __construct(SluggerInterface $slugger, EntityManagerInterface $em)
+    public function __construct(SluggerInterface $slugger, EntityManagerInterface $em, CategoryRepository $categoryRepository)
     {
         $this->slugger = $slugger;
         $this->em = $em;
+        $this->categoryRepository = $categoryRepository;
     }
 
+
+    public function renderMenuList(){
+        $categories = $this->categoryRepository->findAll();
+
+        return $this->render('category/_menu.html.twig', [
+            'category' => $categories
+        ]);
+    }
 
 
     #[Route('/admin/category/{id}/edit', name: 'category_edit')]
